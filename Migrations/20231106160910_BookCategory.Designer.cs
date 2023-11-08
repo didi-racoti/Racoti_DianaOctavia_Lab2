@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Racoti_DianaOctavia_Lab2.Data;
 
@@ -11,9 +12,10 @@ using Racoti_DianaOctavia_Lab2.Data;
 namespace Racoti_DianaOctavia_Lab2.Migrations
 {
     [DbContext(typeof(Racoti_DianaOctavia_Lab2Context))]
-    partial class Racoti_DianaOctavia_Lab2ContextModelSnapshot : ModelSnapshot
+    [Migration("20231106160910_BookCategory")]
+    partial class BookCategory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -136,7 +138,7 @@ namespace Racoti_DianaOctavia_Lab2.Migrations
             modelBuilder.Entity("Racoti_DianaOctavia_Lab2.Models.Book", b =>
                 {
                     b.HasOne("Racoti_DianaOctavia_Lab2.Models.Author", "Author")
-                        .WithMany("Books")
+                        .WithMany()
                         .HasForeignKey("AuthorID");
 
                     b.HasOne("Racoti_DianaOctavia_Lab2.Models.Publisher", "Publisher")
@@ -165,11 +167,6 @@ namespace Racoti_DianaOctavia_Lab2.Migrations
                     b.Navigation("Book");
 
                     b.Navigation("Category");
-                });
-
-            modelBuilder.Entity("Racoti_DianaOctavia_Lab2.Models.Author", b =>
-                {
-                    b.Navigation("Books");
                 });
 
             modelBuilder.Entity("Racoti_DianaOctavia_Lab2.Models.Book", b =>
