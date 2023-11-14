@@ -8,11 +8,15 @@ namespace Racoti_DianaOctavia_Lab2.Models
     {
         public int ID { get; set; }
         [Display(Name = "Book Title")]
+        [Required(ErrorMessage = "Completați titlul cărții!")]
+        [MaxLength(150, ErrorMessage = "Titlul cărții nu poate avea mai mult de 150 de caractere.")]
+        [MinLength(3, ErrorMessage = "Titlul cărții trebuie să aibă cel puțin 3 caractere.")]
         public string Title { get; set; }
         public int? AuthorID { get; set; }
         public Author? Author { get; set; }//navigation property
 
         [Column(TypeName = "decimal(6, 2)")]
+        [Range(0.01, 500)]
         public decimal Price { get; set; }
 
         [DataType(DataType.Date)]
